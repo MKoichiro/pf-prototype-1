@@ -30,16 +30,16 @@ jobs:
   # Build
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web
+    # defaults:
+    #   run:
+    #     working-directory: web
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Build Image
-        run: docker compose --project-directory .. -f compose.yml -f compose.prod.yml build web
+        run: docker compose -f compose.yml -f compose.prod.yml build web
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -59,7 +59,7 @@ jobs:
         run: |
           docker image tag ${{ env.DOCKER_IMAGE_TEMP }} $REGISTRY/$REPOSITORY:$IMAGE_TAG
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          echo $REGISTRY/$REPOSITORY:$IMAGE_TAG > ${{ env.ARTIFACT_FILE }}
+          echo $REGISTRY/$REPOSITORY:$IMAGE_TAG > ./web/${{ env.ARTIFACT_FILE }}
 
       - name: Upload the image URI file as an artifact
         uses: actions/upload-artifact@v4
