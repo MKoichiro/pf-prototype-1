@@ -1,0 +1,8 @@
+*.env
+/.ruby-lsp/
+/personal/
+/Makefile
+/generate-env.sh
+/aliases.sh
+/template/
+/backup/

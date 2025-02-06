@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      target: development
+    image: api-prev:latest
+
+  web:
+    build:
+      target: preview
+    image: web-prev:latest
+    ports:
+      - "$PROD_WEB_PORT:$PROD_WEB_PORT"
+    # Not required in preview environments
+    env_file: []
+    volumes: []

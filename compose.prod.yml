@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      target: production
+      args:
+        PROD_API_PORT: $PROD_API_PORT
+    image: tmp-api-image:latest # Renamed in the api.cicd.yml workflow
+
+
+  web:
+    build:
+      target: production
+      args:
+        PROD_WEB_PORT: $PROD_WEB_PORT
+    image: tmp-web-image:latest # Renamed in the web.cicd.yml workflow
