@@ -92,6 +92,7 @@ Rails.application.configure do
     /.*\.elb\.amazonaws\.com/,
     "pf-api-container-8080-tcp.testCluster", # Client -> ALB -> api
     "clino-mania.net",                       # Client -> ALB -> pf-web-container -> pf-api-container
+    /(.*\.)*clino-mania\.net/,
   ]
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/health" } }
