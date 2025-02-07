@@ -91,6 +91,7 @@ Rails.application.configure do
     "api-container",                         # Development environment
     /.*\.elb\.amazonaws\.com/,
     "pf-api-container-8080-tcp.testCluster", # Client -> ALB -> api
+    "pf-api-container-8080-tcp.pf-cluster",
     "clino-mania.net",                       # Client -> ALB -> pf-web-container -> pf-api-container
     /(.*\.)*clino-mania\.net/,
   ]
