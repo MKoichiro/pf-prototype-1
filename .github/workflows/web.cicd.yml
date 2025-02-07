@@ -49,14 +49,12 @@ jobs:
           RAILS_VER: ${{ secrets.RAILS_VER }}
           BUNDLE_PATH: ${{ secrets.BUNDLE_PATH }}
           BUNDLE_BIN: ${{ secrets.BUNDLE_BIN }}
-          DEV_API_PORT: ${{ secrets.DEV_API_PORT }}
           PROD_API_PORT: ${{ secrets.PROD_API_PORT }}
           WEB_USER_NAME: ${{ secrets.WEB_USER_NAME }}
           WEB_GROUP_NAME: ${{ secrets.WEB_GROUP_NAME }}
           NODE_VER: ${{ secrets.NODE_VER }}
           NPM_VER: ${{ secrets.NPM_VER }}
           YARN_VER: ${{ secrets.YARN_VER }}
-          DEV_WEB_PORT: ${{ secrets.DEV_WEB_PORT }}
           PROD_WEB_PORT: ${{ secrets.PROD_WEB_PORT }}
         run: docker compose -f compose.yml -f compose.prod.yml build web
 
