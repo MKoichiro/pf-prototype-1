@@ -1,18 +1,9 @@
 services:
-  db:
-    container_name: db-container
-    image: postgres
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    env_file:
-      - ./db/docker/db.env
-
   api:
     container_name: api-container
     build:
       context: ./api
       dockerfile: docker/Dockerfile
-      target: development
       args:
         RUBY_VER: $RUBY_VER
         USER_ID: $USER_ID
@@ -21,42 +12,22 @@ services:
         GROUP_NAME: $API_GROUP_NAME
         BUNDLE_PATH: $BUNDLE_PATH
         BUNDLE_BIN: $BUNDLE_BIN
-        DEV_API_PORT: $DEV_API_PORT
-    env_file:
-      - ./api/docker/api.env
-    ports:
-      - "$DEV_API_PORT:$DEV_API_PORT"
-    volumes:
-      - ./api:/home/$API_USER_NAME/api
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s --port $DEV_API_PORT --binding '0.0.0.0'"
     tty: true
     stdin_open: true
-    depends_on:
-      - db
 
   web:
     container_name: web-container
     build:
       context: ./web
       dockerfile: docker/Dockerfile
-      target: development
       args:
         NODE_VER_ARG: $NODE_VER
         USER_ID: $USER_ID
         GROUP_ID: $GROUP_ID
         USER_NAME: $WEB_USER_NAME
         GROUP_NAME: $WEB_GROUP_NAME
-    ports:
-      - "$DEV_WEB_PORT:$DEV_WEB_PORT"
-    env_file:
-      - ./web/docker/web.env
-    volumes:
-      - ./web:/home/node/web
     tty: true
     stdin_open: true
     depends_on:
       - api
-
-volumes:
-  db-data:
-    name: ${PROJECT_NAME}_db-data
