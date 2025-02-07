@@ -17,7 +17,7 @@ permissions:
 
 env:
   AWS_REGION: ap-northeast-1
-  ECS_CLUSTER_NAME: testCluster
+  ECS_CLUSTER_NAME: pf-cluster
   ECS_SERVICE_NAME: pf-api-srv
   ECS_CONTAINER_NAME: pf-api-container
   ECR_REPOSITORY_NAME: pf-api-repo
