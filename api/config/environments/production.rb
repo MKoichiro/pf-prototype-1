@@ -87,13 +87,11 @@ Rails.application.configure do
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   config.hosts = [
+    "api-container",                        # Development environment
+    "pf-api-container-8080-tcp.pf-cluster", # Client -> ALB -> api
+    /(.*\.)*clino-mania\.net/,              # Client -> ALB -> pf-web-container -> pf-api-container
     "localhost",
-    "api-container",                         # Development environment
     /.*\.elb\.amazonaws\.com/,
-    "pf-api-container-8080-tcp.testCluster", # Client -> ALB -> api
-    "pf-api-container-8080-tcp.pf-cluster",
-    "clino-mania.net",                       # Client -> ALB -> pf-web-container -> pf-api-container
-    /(.*\.)*clino-mania\.net/,
   ]
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/health" } }

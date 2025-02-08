@@ -12,4 +12,5 @@ services:
       target: production
       args:
         PROD_WEB_PORT: $PROD_WEB_PORT
-    image: tmp-web-image:latest # Renamed in the web.cicd.yml workflow
+    # image: tmp-web-image:latest # Renamed in the web.cicd.yml workflow
+    image: 730335341192.dkr.ecr.ap-northeast-1.amazonaws.com/pf-web-repo:latest
