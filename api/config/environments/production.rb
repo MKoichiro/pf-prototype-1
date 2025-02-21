@@ -89,6 +89,7 @@ Rails.application.configure do
   config.hosts = [
     "api-container",                        # Development environment
     "pf-api-container-8080-tcp.pf-cluster", # Client -> ALB -> api
+    /.*api-container.*/,
     /(.*\.)*clino-mania\.net/,              # Client -> ALB -> pf-web-container -> pf-api-container
     "localhost",
     /.*\.elb\.amazonaws\.com/,

@@ -1,8 +1,28 @@
+# Credentials
 *.env
-/.ruby-lsp/
+
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+terraform.tfstate.backup
+
+# Provider's version info.
+# It seems whether to commit depends on each project's guideline.
+#.terraform.lock.hcl
+
+
+# Personal
 /personal/
 /Makefile
 /generate-env.sh
 /aliases.sh
 /template/
 /backup/
+
+
+# Editor
+/.ruby-lsp/
