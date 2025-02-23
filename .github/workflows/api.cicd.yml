@@ -22,9 +22,9 @@ permissions:
 
 env:
   AWS_REGION: ap-northeast-1
-  ECS_CLUSTER_NAME: pf-cluster
-  ECS_SERVICE_NAME: pf-api-srv
-  ECS_CONTAINER_NAME: pf-api-container
+  ECS_CLUSTER_NAME: dev-pf-cluster
+  ECS_SERVICE_NAME: dev-pf-api-srv
+  ECS_CONTAINER_NAME: dev-pf-api-container
   ECR_REPOSITORY_NAME: pf-api-repo
   # ECS_TASK_DEFINITION_PATH: infra/aws/task-def/api-td.json
   ECS_TASK_DEFINITION_FAMILY_NAME: dev-pf-api-td
@@ -116,6 +116,7 @@ jobs:
       - name: ADD $API_IMAGE_URI to $GITHUB_ENV
         run: echo "API_IMAGE_URI=$(cat $GITHUB_WORKSPACE/artifact/${{ env.ARTIFACT_FILE }})" >> $GITHUB_ENV
 
+      # ref: https://github.com/aws-actions/amazon-ecs-deploy-task-definition/blob/master/README.md#task-definition-file
       - name: Download latest task definition from AWS cloud
         run: |
           aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION_FAMILY_NAME }} --query taskDefinition > task-definition.json
