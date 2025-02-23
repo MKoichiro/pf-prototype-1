@@ -125,7 +125,7 @@ jobs:
         id: render-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition.json
+          task-definition: web/task-definition.json
           container-name: ${{ env.ECS_CONTAINER_NAME }}
           image: ${{ env.API_IMAGE_URI }}
 
