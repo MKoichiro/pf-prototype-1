@@ -26,7 +26,6 @@ env:
   ECS_SERVICE_NAME: dev-pf-web-srv
   ECS_CONTAINER_NAME: dev-pf-web-container
   ECR_REPOSITORY_NAME: pf-web-repo
-  # ECS_TASK_DEFINITION_PATH: infra/aws/task-def/web-td.json
   ECS_TASK_DEFINITION_FAMILY_NAME: dev-pf-web-td
   DOCKER_IMAGE_TEMP: tmp-web-image:latest
   ARTIFACT_NAME: web-image-uri

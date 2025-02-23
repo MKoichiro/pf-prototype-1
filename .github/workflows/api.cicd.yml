@@ -26,7 +26,6 @@ env:
   ECS_SERVICE_NAME: dev-pf-api-srv
   ECS_CONTAINER_NAME: dev-pf-api-container
   ECR_REPOSITORY_NAME: pf-api-repo
-  # ECS_TASK_DEFINITION_PATH: infra/aws/task-def/api-td.json
   ECS_TASK_DEFINITION_FAMILY_NAME: dev-pf-api-td
   DOCKER_IMAGE_TEMP: tmp-api-image:latest
   ARTIFACT_NAME: api-image-uri
