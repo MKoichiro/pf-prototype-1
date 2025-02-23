@@ -90,7 +90,7 @@ jobs:
 
   # Deploy
   deploy:
-    if: ${{ !github.event.inputs.not_deploy }}
+    if: ${{ github.event.inputs.not_deploy == 'false' }}
     runs-on: ubuntu-latest
     needs: [build]
     defaults:
