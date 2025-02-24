@@ -21,12 +21,12 @@ resource "aws_ecs_task_definition" "this" {
 
 # Service
 resource "aws_ecs_service" "this" {
-  name             = "${var.env_prefix}-pf-web-srv"
-  cluster          = var.cluster_arn
-  task_definition  = aws_ecs_task_definition.this.arn
-  desired_count    = 1
-  launch_type      = "FARGATE"
-  platform_version = "1.4.0" # equivalent to "latest" @2025/02/22
+  name                   = "${var.env_prefix}-pf-web-srv"
+  cluster                = var.cluster_arn
+  task_definition        = aws_ecs_task_definition.this.arn
+  desired_count          = 1
+  launch_type            = "FARGATE"
+  platform_version       = "1.4.0" # equivalent to "latest" @2025/02/22
   enable_execute_command = true
 
 

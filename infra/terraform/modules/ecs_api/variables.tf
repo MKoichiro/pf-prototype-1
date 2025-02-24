@@ -61,6 +61,6 @@ variable "ecs_task_execution_role_arn" {
 }
 
 variable "ecs_task_role_arn" {
-  type = string
+  type        = string
   description = "ARN of task role"
 }

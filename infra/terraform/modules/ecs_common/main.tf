@@ -77,15 +77,15 @@ resource "aws_iam_role_policy_attachment" "this" {
 # Attach the additional permission policy to the Role
 #   This resource only supports direct attachment of inline policies.
 resource "aws_iam_role_policy" "ecs_task_execution_role" {
-  name   = "additional_permission_policy"
-  role   = aws_iam_role.ecs_task_execution_role.name
-  policy = data.aws_iam_policy_document.additional_permission_policy.json
-  depends_on = [ aws_iam_role.ecs_task_execution_role ] # To avoid the ERROR: waiting for IAM Role Policy
+  name       = "additional_permission_policy"
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy     = data.aws_iam_policy_document.additional_permission_policy.json
+  depends_on = [aws_iam_role.ecs_task_execution_role] # To avoid the ERROR: waiting for IAM Role Policy
 }
 # task role
 resource "aws_iam_role_policy" "ecs_task_role" {
-  name   = "additional_permission_policy"
-  role   = aws_iam_role.ecs_task_role.name
-  policy = data.aws_iam_policy_document.ecs_task_role.json
-  depends_on = [ aws_iam_role.ecs_task_role ] # To avoid the ERROR: waiting for IAM Role Policy
+  name       = "additional_permission_policy"
+  role       = aws_iam_role.ecs_task_role.name
+  policy     = data.aws_iam_policy_document.ecs_task_role.json
+  depends_on = [aws_iam_role.ecs_task_role] # To avoid the ERROR: waiting for IAM Role Policy
 }

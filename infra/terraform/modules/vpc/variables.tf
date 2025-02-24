@@ -20,6 +20,6 @@ variable "private_subnets" {
 }
 
 variable "nat_location" {
-  type = string
+  type        = string
   description = "AZ where nat gateway allocate"
 }

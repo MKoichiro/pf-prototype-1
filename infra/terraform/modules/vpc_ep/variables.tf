@@ -29,11 +29,11 @@ variable "interface_endpoints" {
 }
 
 variable "vpcep-sg-ids" {
-  type = list(string)
+  type        = list(string)
   description = "A list of security group ids for vpc endpoints"
 }
 
 variable "ssmmessages_endpoint" {
-  type = string
+  type        = string
   description = "The Endpoint name for ssmmessages"
 }

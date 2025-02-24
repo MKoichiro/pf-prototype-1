@@ -108,7 +108,7 @@ resource "aws_nat_gateway" "this" {
 
   allocation_id = aws_eip.nat[0].id
   subnet_id     = aws_subnet.public["${var.nat_location}"].id
-  depends_on = [aws_eip.nat]
+  depends_on    = [aws_eip.nat]
 
   tags = {
     Name = "${var.env_prefix}-nat-gateway"

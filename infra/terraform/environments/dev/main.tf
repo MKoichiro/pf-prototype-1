@@ -16,8 +16,8 @@ locals {
 }
 
 module "vpc" {
-  source     = "../../modules/vpc"
-  env_prefix = local.env
+  source       = "../../modules/vpc"
+  env_prefix   = local.env
   nat_location = var.enable_nat ? "ap-northeast-1a" : null
 
   vpc_cidr = local.vpc_cidr
@@ -47,7 +47,7 @@ module "vpc_ep" {
   vpc_cidr           = local.vpc_cidr
   private_subnet_ids = module.vpc.private_subnet_ids
   route_table_ids    = module.vpc.private_route_table_ids
-  vpcep-sg-ids = [module.security_group.vpcep_sg_id]
+  vpcep-sg-ids       = [module.security_group.vpcep_sg_id]
 
   gateway_endpoints = {
     "s3" = "com.amazonaws.${data.aws_region.current.name}.s3"
@@ -81,7 +81,7 @@ module "alb" {
 # Fill in the entries in the db_config_* block, referring to the following documentation
 # Terraform > Resource: aws_db_instance     [https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance]
 # AWS RDS API reference > CreateDBInstance  [https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html]
-# 
+#
 # * To decide "engine_version", you can check out the available engine versions by running the following command.
 #   `$ aws rds describe-db-engine-versions --default-only --engine postgres`
 # * To check out other internal preferences, See ../../modules/rds/main.tf
@@ -140,12 +140,12 @@ module "ecs_api" {
 
   alb_api_tg_arn = module.alb.api_tg_arn
   api_repo_name  = "pf-api-repo"
-  api_repo_tag   = (
+  api_repo_tag = (
     var.use_latest_image
     ? data.external.latest_commit.result.commit_hash
     : "216e5852bd7838efc5575e0b5b51d4304faf0d52"
   )
-  api_sg_ids     = [module.security_group.api_sg_id]
+  api_sg_ids = [module.security_group.api_sg_id]
 
   secrets_arn      = module.rds.secrets_arn
   rails_master_key = "rails_master_key"
@@ -164,12 +164,12 @@ module "ecs_web" {
 
   alb_web_tg_arn = module.alb.web_tg_arn
   web_repo_name  = "pf-web-repo"
-  web_repo_tag   = (
+  web_repo_tag = (
     var.use_latest_image
     ? data.external.latest_commit.result.commit_hash
     : "216e5852bd7838efc5575e0b5b51d4304faf0d52"
   )
-  web_sg_ids     = [module.security_group.web_sg_id]
+  web_sg_ids = [module.security_group.web_sg_id]
 }
 
 module "parameter_store" {
