@@ -17,6 +17,7 @@ terraform.tfstate.backup
 
 # Personal
 /personal/
+/.vscode/
 /Makefile
 /generate-env.sh
 /aliases.sh

@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   const [users, setUsers] = useState<string>()
+
   const btnClickHandler = async () => {
     console.table(import.meta.env);
 

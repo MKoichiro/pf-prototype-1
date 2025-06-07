@@ -40,6 +40,7 @@ variable "use_latest_image" {
   description = <<-EOF
     [true/false]
     If true, use the latest commit hash from the remote repository as the image tag.
+    CURRENT DEFAULT ENTRY: ed495e7137f69b22b74f886a1e3f9bb2fefbe53a
   EOF
 }
 

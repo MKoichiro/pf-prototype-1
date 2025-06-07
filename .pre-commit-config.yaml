@@ -1,13 +1,4 @@
 repos:
-  - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.97.3 # https://github.com/antonbabenko/pre-commit-terraform/releases
-    hooks:
-      - id: terraform_fmt
-        files: \.tf$
-      - id: terraform_validate
-        files: \.tf$
-
-repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0 # https://github.com/pre-commit/pre-commit-hooks/releases
     hooks:
@@ -15,3 +6,11 @@ repos:
       - id: end-of-file-fixer   # EOFの空行を調整
         exclude: 'credentials\.yml\.enc'
       - id: detect-private-key  # 秘密鍵の漏洩防止
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.97.3 # https://github.com/antonbabenko/pre-commit-terraform/releases
+    hooks:
+      - id: terraform_fmt
+        files: \.tf$
+      - id: terraform_validate
+        files: ^.*environments/.*\.tf$

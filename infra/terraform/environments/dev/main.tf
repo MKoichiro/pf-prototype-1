@@ -143,7 +143,7 @@ module "ecs_api" {
   api_repo_tag = (
     var.use_latest_image
     ? data.external.latest_commit.result.commit_hash
-    : "216e5852bd7838efc5575e0b5b51d4304faf0d52"
+    : "ed495e7137f69b22b74f886a1e3f9bb2fefbe53a"
   )
   api_sg_ids = [module.security_group.api_sg_id]
 
@@ -167,7 +167,7 @@ module "ecs_web" {
   web_repo_tag = (
     var.use_latest_image
     ? data.external.latest_commit.result.commit_hash
-    : "216e5852bd7838efc5575e0b5b51d4304faf0d52"
+    : "ed495e7137f69b22b74f886a1e3f9bb2fefbe53a"
   )
   web_sg_ids = [module.security_group.web_sg_id]
 }
